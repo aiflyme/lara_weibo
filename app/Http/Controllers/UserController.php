@@ -17,12 +17,17 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'name' => 'required|unique:users|max:50',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|confirmed|min:6'
+        ]);
+        return;
     }
-    
-    
+
+
 
     public function show(User $user)
     {

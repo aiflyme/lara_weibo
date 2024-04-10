@@ -5,31 +5,32 @@
     <div class="offset-md-2 col-md-8">
         <div class="card ">
             <div class="card-header">
-                <h5>注册</h5>
+                <h5>Register</h5>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('user.store') }}">
+                    @csrf
                     <div class="mb-3">
-                        <label for="name">名称：</label>
+                        <label for="name">Name：</label>
                         <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="email">邮箱：</label>
+                        <label for="email">Email：</label>
                         <input type="text" name="email" class="form-control" value="{{ old('email') }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="password">密码：</label>
+                        <label for="password">Password：</label>
                         <input type="password" name="password" class="form-control" value="{{ old('password') }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="password_confirmation">确认密码：</label>
+                        <label for="password_confirmation">Confirm password：</label>
                         <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">注册</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
                 </form>
             </div>
         </div>
