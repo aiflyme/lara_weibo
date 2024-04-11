@@ -20,7 +20,7 @@
 
                 <div class="mb-3">
                     <label for="password">password：</label>
-                    <input type="password" name="password" class="form-control" value="{{ old('password') }}">
+                    <input type="password" name="password" class="form-control" >
                 </div>
 
                 <button type="submit" class="btn btn-primary">log in</button>
