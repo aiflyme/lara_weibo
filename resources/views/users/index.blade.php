@@ -1,0 +1,18 @@
+@extends('layouts.default')
+@section('title', 'All user')
+
+@section('content')
+    <div class="offset-md-2 col-md-8">
+        <h2 class="mb-4 text-center">All user</h2>
+        <div class="list-group list-group-flush">
+            @foreach ($users as $user)
+                <div class="list-group-item">
+                    <img class="mr-3" src="{{ $user->gravatar() }}" alt="{{ $user->name }}" width=32>
+                    <a href="{{ route('user.show', $user) }}">
+                        {{ $user->name }}
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@stop
