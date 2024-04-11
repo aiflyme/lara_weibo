@@ -28,5 +28,7 @@ Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout');
 
 //Route::get('/user/qq', [UserController::class, 'create'])->name('user.qq');
 //Route::middleware('auth', expect)->group(function (){
+Route::get('signup/confirm/{token}', [UserController::class, 'confirmEmail'])->name('confirm_email');
 Route::resource('user', UserController::class);
 //});
+
