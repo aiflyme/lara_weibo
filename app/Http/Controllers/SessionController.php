@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class SessionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
     public function create()
     {
         return view('sessions.create');
@@ -22,8 +28,8 @@ class SessionController extends Controller
 
         if(auth::attempt($credentials, $request->has('remember'))){
             session()->flash('success', $request->name .' Welcome come back！');
-            return redirect()->route('user.show', [Auth::user()]);
-
+            $fallback = route('user.show', Auth::user());
+            return redirect()->intended($fallback);
         }else{
             session()->flash('danger', 'sorry, your email or password are not right!');
             return redirect()->back()->withInput();

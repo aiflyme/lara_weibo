@@ -21,6 +21,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                session()->flash('info', 'You have login in');
                 return redirect(RouteServiceProvider::HOME);
             }
         }

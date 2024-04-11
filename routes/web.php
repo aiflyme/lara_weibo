@@ -27,4 +27,6 @@ Route::post('/login', [SessionController::class, 'store'])->name('login');
 Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout');
 
 //Route::get('/user/qq', [UserController::class, 'create'])->name('user.qq');
+//Route::middleware('auth', expect)->group(function (){
 Route::resource('user', UserController::class);
+//});
