@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,11 @@ Route::get('/', [StaticPagesController::class, 'home'])->name('home');
 Route::get('/help', [StaticPagesController::class, 'help'])->name('help');
 Route::get('/about', [StaticPagesController::class, 'about'])->name('about');
 
-Route::get('/user/qq', [UserController::class, 'create'])->name('user.qq');
-Route::resource('user', UserController::class);
 
+
+Route::get('/login', [SessionController::class, 'create'])->name('login');
+Route::post('/login', [SessionController::class, 'store'])->name('login');
+Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout');
+
+//Route::get('/user/qq', [UserController::class, 'create'])->name('user.qq');
+Route::resource('user', UserController::class);
