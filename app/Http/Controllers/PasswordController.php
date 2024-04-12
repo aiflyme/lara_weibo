@@ -13,6 +13,15 @@ use Illuminate\Support\Str;
 
 class PasswordController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('throttle:5,1', [
+            'only' => ['showLinkRequestForm']
+        ]);
+        $this->middleware('throttle:5,1', [
+            'only' => ['sendResetLinkEmail']
+        ]);
+    }
     public function showLinkRequestForm()
     {
         return view('auth.passwords.email');
@@ -63,7 +72,6 @@ class PasswordController extends Controller
 
     public function reset(Request $request)
     {
-git
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
