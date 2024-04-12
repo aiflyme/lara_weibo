@@ -3,6 +3,7 @@
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StaticPagesController;
+use App\Http\Controllers\StatusesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +39,7 @@ Route::post('password/request', [PasswordController::class, 'sendResetLinkEmail'
 
 Route::get('password/reset/{token}',[PasswordController::class,'showResetForm'])->name('password.reset');
 Route::post('password/reset',[PasswordController::class,'reset'])->name('password.update');
+
+Route::middleware('auth')->group(function () { //>prefix('ticket')->name('ticket.')-
+    Route::resource('statuses', StatusesController::class)->only(['store', 'destroy']);
+});
