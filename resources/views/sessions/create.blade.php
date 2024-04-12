@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password">password：</label>
+                    <label for="password">password：（<a href="{{ route('password.request') }}">forget password</a>） </label>
                     <input type="password" name="password" class="form-control" >
                 </div>
 
@@ -35,7 +35,7 @@
 
             <hr>
 
-            <p>no account？<a href="{{ route('user.create') }}">Register now！</a></p>
+            <p>no account？<a href="{{ route('user.create') }}">Register now！</a> </p>
         </div>
     </div>
 </div>
